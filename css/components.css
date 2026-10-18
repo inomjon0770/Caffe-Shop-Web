@@ -1,0 +1,648 @@
+/* ==========================================================================
+   JavaGem - UI Components
+   Design system components styled strictly with official palette
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  background-color: var(--color-01-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-01-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px var(--color-01-primary-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-icon-round {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-03-dark);
+  transition: all var(--transition-fast);
+}
+
+.btn-icon-round:hover {
+  background: var(--color-05-cream);
+  transform: scale(1.05);
+}
+
+.btn-icon-round:active {
+  transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   Search Bar & Filter
+   -------------------------------------------------------------------------- */
+.search-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.search-input-box {
+  flex: 1;
+  height: 52px;
+  background: #2A2A2A;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all var(--transition-fast);
+}
+
+.search-input-box:focus-within {
+  background: #333333;
+  border-color: var(--color-01-primary);
+  box-shadow: 0 0 0 2px var(--color-01-primary-glow);
+}
+
+.search-input-box svg {
+  width: 20px;
+  height: 20px;
+  stroke: #FFFFFF;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.search-input-box input {
+  width: 100%;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.search-input-box input::placeholder {
+  color: #989898;
+}
+
+.filter-btn {
+  width: 52px;
+  height: 52px;
+  background: var(--color-01-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: 0 4px 14px var(--color-01-primary-glow);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background: var(--color-01-primary-dark);
+  transform: translateY(-1px);
+}
+
+.filter-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Promo Banner Card
+   -------------------------------------------------------------------------- */
+.promo-card {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(135deg, #1F1915 0%, #3D2B20 100%);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(237, 214, 200, 0.12);
+  cursor: pointer;
+}
+
+.promo-badge {
+  display: inline-block;
+  background: var(--color-promo-red);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.promo-title {
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 2;
+  max-width: 160px;
+}
+
+.promo-title span {
+  display: inline-block;
+  position: relative;
+}
+
+.promo-title span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 6px;
+  background: rgba(198, 124, 78, 0.6);
+  z-index: -1;
+  border-radius: 2px;
+}
+
+.promo-image-wrap {
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  width: 155px;
+  height: 155px;
+  pointer-events: none;
+}
+
+.promo-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+}
+
+/* --------------------------------------------------------------------------
+   Category Horizontal Pills
+   -------------------------------------------------------------------------- */
+.categories-scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 0 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #313131;
+  background: var(--color-05-cream);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.category-pill:hover {
+  background: var(--color-02-secondary);
+}
+
+.category-pill.active {
+  background: var(--color-01-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px var(--color-01-primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Coffee Product Card (2-Column Grid)
+   -------------------------------------------------------------------------- */
+.coffee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding-bottom: 90px;
+}
+
+.coffee-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 8px 8px 12px 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-04-border-light);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.coffee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(49, 49, 49, 0.08);
+  border-color: var(--color-02-secondary);
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 128px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #EFEFEF;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.coffee-card:hover .card-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.rating-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.rating-badge svg {
+  width: 11px;
+  height: 11px;
+  fill: var(--color-star-yellow);
+}
+
+.card-info {
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-03-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-03-dark);
+}
+
+.card-price span {
+  font-size: 12px;
+  color: var(--color-01-primary);
+  margin-right: 2px;
+}
+
+.card-add-btn {
+  width: 32px;
+  height: 32px;
+  background: var(--color-01-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: 0 3px 8px var(--color-01-primary-glow);
+  transition: all var(--transition-fast);
+}
+
+.card-add-btn:hover {
+  background: var(--color-01-primary-dark);
+  transform: scale(1.1);
+}
+
+.card-add-btn:active {
+  transform: scale(0.9);
+}
+
+.card-add-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* --------------------------------------------------------------------------
+   Sticky Bottom Navigation Bar
+   -------------------------------------------------------------------------- */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: var(--color-white);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px 12px 16px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--color-04-border-light);
+  z-index: 300;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px 12px;
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.nav-item svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: all var(--transition-fast);
+}
+
+.nav-item.active {
+  color: var(--color-01-primary);
+}
+
+.nav-item.active svg {
+  stroke: var(--color-01-primary);
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: 2px;
+  width: 12px;
+  height: 3px;
+  background: var(--color-01-primary);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all var(--transition-fast);
+}
+
+.nav-item.active .nav-indicator {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.cart-badge-count {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: var(--color-01-primary);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   Segmented Control (Deliver / Pick Up)
+   -------------------------------------------------------------------------- */
+.segmented-control {
+  display: flex;
+  align-items: center;
+  background: var(--color-05-cream);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  position: relative;
+  width: 100%;
+}
+
+.segment-btn {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-03-dark);
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition-normal);
+}
+
+.segment-btn.active {
+  background: var(--color-01-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px var(--color-01-primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Quantity Stepper [- 1 +]
+   -------------------------------------------------------------------------- */
+.stepper-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1px solid var(--color-04-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-03-dark);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all var(--transition-fast);
+}
+
+.step-btn:hover {
+  background: var(--color-05-cream);
+  border-color: var(--color-01-primary);
+  color: var(--color-01-primary);
+}
+
+.step-count {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-03-dark);
+  min-width: 16px;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Modals & Bottom Drawers
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+  display: flex;
+  align-items: flex-end;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-sheet {
+  width: 100%;
+  background: var(--color-white);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  padding: 24px 20px 34px 20px;
+  transform: translateY(100%);
+  transition: transform var(--transition-spring);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.modal-overlay.active .modal-sheet {
+  transform: translateY(0);
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--color-04-border);
+  border-radius: var(--radius-full);
+  margin: 0 auto 16px auto;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sheet-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-03-dark);
+}
+
+.sheet-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-05-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: absolute;
+  top: 54px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: var(--color-03-dark);
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  z-index: 1000;
+  border: 1px solid rgba(237, 214, 200, 0.3);
+  white-space: nowrap;
+}
+
+.toast-container.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}

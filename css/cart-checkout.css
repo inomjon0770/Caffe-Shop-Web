@@ -1,0 +1,532 @@
+/* ==========================================================================
+   JavaGem — Cart Drawer, Coffee Customizer & Checkout Modal Stylesheet
+   ========================================================================== */
+
+/* Universal Modal Overlay */
+.web-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans);
+  padding: 20px;
+}
+
+.web-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.web-modal-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95) translateY(10px);
+  transition: transform var(--trans-spring);
+  padding: 32px;
+}
+
+.web-modal-overlay.active .web-modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.btn-close-modal {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 20;
+  transition: all var(--trans);
+  flex-shrink: 0;
+}
+
+.btn-close-modal:hover {
+  background: var(--c-primary);
+  color: #FFFFFF;
+  border-color: var(--c-primary);
+  transform: scale(1.1);
+}
+
+.btn-close-modal:active {
+  transform: scale(0.95);
+}
+
+
+/* ==========================================================================
+   1. Cart Drawer (Slide over from right)
+   ========================================================================== */
+.cart-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 2100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans);
+}
+
+.cart-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border-color);
+  z-index: 2200;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+  transform: translateX(100%);
+  transition: transform var(--trans-spring);
+}
+
+.cart-drawer-overlay.active .cart-drawer {
+  transform: translateX(0);
+}
+
+.cart-drawer-head {
+  padding: 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-drawer-head h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.cart-items-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.cart-item-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cart-item-spec {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.cart-item-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cart-price-bold {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--c-primary);
+}
+
+.cart-stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-step-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cart-step-btn:hover {
+  background: var(--c-primary);
+  color: #FFFFFF;
+}
+
+.cart-step-val {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cart-drawer-foot {
+  padding: 24px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.cart-summary-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.cart-summary-line.total {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 14px 0 20px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.cart-summary-line.total span:last-child {
+  color: var(--c-primary);
+}
+
+/* ==========================================================================
+   2. Coffee Customizer Modal
+   ========================================================================== */
+.customizer-hero-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.customizer-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.customizer-info h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.customizer-info p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.customizer-option-group {
+  margin-bottom: 20px;
+}
+
+.opt-group-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.opt-pills-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.opt-pill-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.opt-pill-btn:hover {
+  border-color: var(--c-primary);
+}
+
+.opt-pill-btn.active {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   3. Checkout Modal
+   ========================================================================== */
+.checkout-segmented-row {
+  display: flex;
+  background: var(--bg-surface-elevated);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+}
+
+.checkout-seg-btn {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.checkout-seg-btn.active {
+  background: var(--c-primary);
+  color: #FFFFFF;
+}
+
+.promo-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   4. Interactive Star Rating & Reviews
+   ========================================================================== */
+.star-rating-box {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.star-rating-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.interactive-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-pick-btn {
+  font-size: 26px;
+  color: #4A4A4A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.star-pick-btn.active, .star-pick-btn:hover {
+  color: var(--c-yellow);
+  transform: scale(1.2);
+}
+
+.star-score-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-left: 10px;
+}
+
+/* Reviews List & Comment Box */
+.customizer-reviews-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.reviews-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.reviews-list-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.review-item-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.review-top-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.review-author {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.review-stars {
+  color: var(--c-yellow);
+  font-size: 12px;
+}
+
+.review-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.add-comment-box {
+  display: flex;
+  gap: 8px;
+}
+
+.add-comment-box input {
+  flex: 1;
+  height: 42px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  color: var(--text-main);
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   5. Location Modal
+   ========================================================================== */
+.location-list-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.location-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--trans);
+  width: 100%;
+}
+
+.location-item-btn:hover {
+  border-color: var(--c-primary);
+  background: rgba(198, 124, 78, 0.08);
+}
+
+.loc-icon-pin {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.loc-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.loc-details p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+

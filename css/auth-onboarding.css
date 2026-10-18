@@ -1,0 +1,557 @@
+/* ==========================================================================
+   JavaGem — Splash Screen, Onboarding Carousel & Authentication Styles
+   ========================================================================== */
+
+/* 1. Splash Screen */
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111111;
+  background: radial-gradient(circle at center, #1E1A17 0%, #0D0C0B 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+.splash-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: splashPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes splashPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.splash-icon-cup {
+  width: 90px;
+  height: 90px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #C67C4E 0%, #8C471E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 12px 36px rgba(198, 124, 78, 0.45);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.splash-icon-cup svg {
+  width: 48px;
+  height: 48px;
+}
+
+.splash-steam {
+  position: absolute;
+  top: -16px;
+  display: flex;
+  gap: 6px;
+}
+
+.steam-line {
+  width: 3px;
+  height: 14px;
+  background: rgba(237, 214, 200, 0.7);
+  border-radius: 3px;
+  animation: steamRise 1.8s infinite ease-in-out;
+}
+
+.steam-line:nth-child(2) {
+  animation-delay: 0.3s;
+  height: 18px;
+}
+
+.steam-line:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.6);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-8px) scaleY(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scaleY(1.4);
+  }
+}
+
+.splash-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+}
+
+.splash-title span {
+  color: #C67C4E;
+}
+
+.splash-tagline {
+  font-size: 15px;
+  color: #9B9B9B;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.splash-spinner {
+  margin-top: 36px;
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(198, 124, 78, 0.2);
+  border-top-color: #C67C4E;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* 2. Onboarding Carousel Screen */
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9990;
+  padding: 20px;
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.onboarding-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.onboarding-card {
+  width: 100%;
+  max-width: 520px;
+  background: #181716;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(198, 124, 78, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: zoomFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomFade {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.onboarding-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 10px 24px;
+}
+
+.onboarding-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #C67C4E;
+  background: rgba(198, 124, 78, 0.14);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(198, 124, 78, 0.3);
+}
+
+.btn-onboarding-skip {
+  background: transparent;
+  border: none;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-onboarding-skip:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Slides Container */
+.onboarding-slides-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 24px 24px 24px;
+}
+
+.onboarding-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 0.35s ease;
+}
+
+.onboarding-slide.active {
+  display: flex;
+}
+
+.onboarding-img-box {
+  width: 100%;
+  height: 240px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.onboarding-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.onboarding-slide.active .onboarding-img-box img {
+  transform: scale(1.03);
+}
+
+.onboarding-slide-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.onboarding-slide-title span {
+  color: #C67C4E;
+}
+
+.onboarding-slide-desc {
+  font-size: 14px;
+  color: #A0A0A0;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* Onboarding Bottom Controls */
+.onboarding-footer {
+  padding: 16px 24px 24px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.onboarding-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.onboarding-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.onboarding-dot.active {
+  width: 24px;
+  background: #C67C4E;
+  box-shadow: 0 0 10px rgba(198, 124, 78, 0.5);
+}
+
+
+/* 3. Authentication Modal (Login / Register / Google) */
+.auth-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9995;
+  padding: 20px;
+  transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.auth-modal-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.auth-modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: #181716;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+  position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: zoomFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.auth-brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-brand-badge .icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #C67C4E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 18px;
+}
+
+.auth-brand-badge h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.auth-brand-badge h3 span {
+  color: #C67C4E;
+}
+
+/* Tabs: Login vs Register */
+.auth-segmented-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #242220;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.auth-tab-btn {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #9B9B9B;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-tab-btn.active {
+  background: #C67C4E;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(198, 124, 78, 0.3);
+}
+
+/* Google OAuth Button */
+.btn-google-auth {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #FFFFFF;
+  color: #1F1F1F;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.btn-google-auth:hover {
+  background: #F2F2F2;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-google-auth svg {
+  width: 20px;
+  height: 20px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #707070;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-divider span {
+  padding: 0 12px;
+}
+
+/* Validation Feedback & Requirements */
+.input-feedback-msg {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.input-feedback-msg.error {
+  color: #ED5151;
+}
+
+.input-feedback-msg.success {
+  color: #36B37E;
+}
+
+/* Password Strength & Criteria Checklist */
+.password-criteria-box {
+  background: #201E1C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.password-criteria-title {
+  font-weight: 700;
+  color: #D4D4D4;
+  margin-bottom: 8px;
+}
+
+.password-criteria-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.criteria-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #8C8C8C;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+
+.criteria-item.valid {
+  color: #36B37E;
+  font-weight: 600;
+}
+
+.criteria-item .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Password Visibility Eye Button */
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrap input {
+  padding-right: 44px;
+}
+
+.btn-toggle-pwd {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #8C8C8C;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-toggle-pwd:hover {
+  color: #FFFFFF;
+}
+
+.btn-toggle-pwd svg {
+  width: 18px;
+  height: 18px;
+}

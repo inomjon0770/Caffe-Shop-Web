@@ -1,0 +1,503 @@
+/* ==========================================================================
+   JavaGem — User Profile & Settings Stylesheet
+   ========================================================================== */
+
+.profile-view {
+  display: block;
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.profile-view.hidden {
+  display: none;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  padding: 40px 0 80px 0;
+}
+
+/* Profile Left Sidebar Card */
+.profile-user-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px auto;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--c-primary);
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.profile-email {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.profile-wallet-box {
+  background: linear-gradient(135deg, rgba(198, 124, 78, 0.15) 0%, rgba(223, 149, 103, 0.1) 100%);
+  border: 1px solid rgba(198, 124, 78, 0.3);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.wallet-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.wallet-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--c-primary);
+  margin-top: 2px;
+}
+
+.profile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.profile-tab-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all var(--trans);
+}
+
+.profile-tab-link:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-main);
+}
+
+.profile-tab-link.active {
+  background: var(--c-primary);
+  color: #FFFFFF;
+}
+
+.profile-tab-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.profile-tab-link.admin-shortcut {
+  margin-top: 14px;
+  background: rgba(198, 124, 78, 0.14);
+  color: var(--c-primary);
+  border: 1px solid rgba(198, 124, 78, 0.35);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+.profile-tab-link.admin-shortcut:hover {
+  background: var(--c-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Avatar Studio & Presets
+   ========================================================================== */
+.avatar-studio-box {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.avatar-studio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar-preview-side {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-preview-img {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--c-primary);
+  box-shadow: 0 4px 12px rgba(198, 124, 78, 0.25);
+}
+
+.avatar-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.avatar-preset-item {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--trans);
+  background: var(--bg-surface);
+  padding: 0;
+}
+
+.avatar-preset-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-preset-item:hover {
+  transform: scale(1.12);
+  border-color: var(--c-primary);
+  box-shadow: 0 4px 12px rgba(198, 124, 78, 0.35);
+  z-index: 2;
+}
+
+.avatar-preset-item.active {
+  border-color: var(--c-primary);
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(198, 124, 78, 0.3), 0 4px 12px rgba(198, 124, 78, 0.4);
+  transform: scale(1.08);
+}
+
+.avatar-preset-item.active::after {
+  content: '✓';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--c-primary);
+  color: #FFF;
+  font-size: 10px;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #FFF;
+}
+
+/* Profile Right Content Area */
+.profile-content-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-pane {
+  display: none;
+}
+
+.profile-pane.active {
+  display: block;
+}
+
+.pane-header {
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pane-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.pane-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Order History List */
+.history-order-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color var(--trans);
+}
+
+.history-order-card:hover {
+  border-color: var(--c-primary);
+}
+
+.history-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history-order-id {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.history-order-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.history-items-list {
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.history-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.history-total {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--c-primary);
+}
+
+/* Address Cards */
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.address-item-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  position: relative;
+}
+
+.address-item-card.default {
+  border-color: var(--c-primary);
+  background: rgba(198, 124, 78, 0.05);
+}
+
+.addr-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.addr-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.addr-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+/* Settings Options (Toggles, Switches) */
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.setting-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.setting-info p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Toggle Switch Style */
+.switch-box {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch-box input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #FFFFFF;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .switch-slider {
+  background-color: var(--c-primary);
+}
+
+input:checked + .switch-slider:before {
+  transform: translateX(22px);
+}
+
+/* Saved Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.saved-card-box {
+  background: linear-gradient(135deg, #2D231E 0%, #452E20 100%);
+  border: 1px solid rgba(237, 214, 200, 0.2);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  color: #FFFFFF;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-top-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-number-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.card-bottom-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--c-secondary);
+}
+
+/* Wallet Top Up Actions */
+.wallet-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.topup-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--c-primary);
+  color: var(--c-primary);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.topup-btn:hover {
+  background: var(--c-primary);
+  color: #FFFFFF;
+}
+
+@media (max-width: 860px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+}
+

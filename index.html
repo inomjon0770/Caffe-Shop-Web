@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaGem Coffee Co. — Premium Artisanal Coffee Shop</title>
+  <meta name="description" content="JavaGem Coffee Co. — Order fresh artisan roasted espresso, mocha, cappuccino, and cold brews with fast live tracking delivery and full admin management.">
+
+  <!-- Nam Design Styleguide & Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/web-layout.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/cart-checkout.css">
+  <link rel="stylesheet" href="css/tracking-map.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/auth-onboarding.css">
+  <link rel="stylesheet" href="css/features-pro.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       0. INTRO SPLASH SCREEN
+       ==================================================================== -->
+  <div class="splash-overlay" id="splash-screen">
+    <div class="splash-logo-container">
+      <div class="splash-icon-cup">
+        <div class="splash-steam">
+          <span class="steam-line"></span>
+          <span class="steam-line"></span>
+          <span class="steam-line"></span>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+      </div>
+      <h1 class="splash-title">Java<span>Gem</span></h1>
+      <p class="splash-tagline">Artisanal Coffee & Live Fast Delivery</p>
+      <div class="splash-spinner"></div>
+      <div style="margin-top:16px; font-size:12px; color:#777;">Tugmani bosing yoki kuting...</div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       0.1 ONBOARDING CAROUSEL WITH SKIP
+       ==================================================================== -->
+  <div class="onboarding-overlay hidden" id="onboarding-screen">
+    <div class="onboarding-card">
+      <div class="onboarding-top-bar">
+        <span class="onboarding-badge">☕ Welcome to JavaGem</span>
+        <button class="btn-onboarding-skip" id="btn-onboarding-skip" title="O'tkazib yuborish">O‘tkazib yuborish (Skip) ✕</button>
+      </div>
+
+      <div class="onboarding-slides-wrapper">
+        <!-- Slide 1 -->
+        <div class="onboarding-slide active" data-slide-index="0">
+          <div class="onboarding-img-box">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&auto=format&fit=crop&q=80" alt="Artisan Coffee">
+          </div>
+          <h2 class="onboarding-slide-title">Fall in Love with <span>Artisanal Coffee</span></h2>
+          <p class="onboarding-slide-desc">100% Arabica donalaridan tayyorlangan xushbo‘y espresso va lattes. Har kuni yangi qovurilgan premium ta'm.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="onboarding-slide" data-slide-index="1">
+          <div class="onboarding-img-box">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=800&auto=format&fit=crop&q=80" alt="Live GPS Delivery">
+          </div>
+          <h2 class="onboarding-slide-title">15-Daqiqada <span>Jonli GPS Yetkazib Berish</span></h2>
+          <p class="onboarding-slide-desc">Maxsus termo-stakanlarda qaynoq haroratda shaxsiy kuryeringiz orqali eshigingizgacha yetkazib beramiz.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="onboarding-slide" data-slide-index="2">
+          <div class="onboarding-img-box">
+            <img src="https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=800&auto=format&fit=crop&q=80" alt="Smart Wallet & Customization">
+          </div>
+          <h2 class="onboarding-slide-title">Har bir finjonni <span>Moslang & Hamyon</span></h2>
+          <p class="onboarding-slide-desc">Sut turi, shakar miqdori va haroratni o‘zingiz belgilang. JavaGem Hamyoni orqali keshbeklarga ega bo‘ling!</p>
+        </div>
+      </div>
+
+      <div class="onboarding-footer">
+        <div class="onboarding-dots">
+          <span class="onboarding-dot active" data-slide="0"></span>
+          <span class="onboarding-dot" data-slide="1"></span>
+          <span class="onboarding-dot" data-slide="2"></span>
+        </div>
+        <button class="btn btn-primary" id="btn-onboarding-next">Keyingisi (Next) →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       1. MAIN GLASSMORPHISM NAVBAR (Desktop & Mobile Responsive)
+       ==================================================================== -->
+  <header class="web-navbar">
+    <div class="container navbar-inner">
+      <!-- Brand Logo -->
+      <a class="brand-logo" id="brand-logo-btn" title="JavaGem Coffee" onclick="window.app?.switchView('home')">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+        </div>
+        <div class="brand-name">Java<span>Gem</span></div>
+      </a>
+
+      <!-- Center Search or Clean Spacer -->
+      <div class="nav-center-spacer"></div>
+
+      <!-- Right Action Tools -->
+      <div class="navbar-actions">
+        <!-- Language Switcher Pill -->
+        <div class="nav-lang-group" title="Tilni tanlang / Выберите язык / Select language">
+          <button class="nav-lang-btn active" data-lang="uz" onclick="window.masterStore?.updatePreference('language', 'uz'); window.profileManager?.applyLanguage('uz'); window.showWebToast('Til: O\'zbekcha 🇺🇿', '🌐');">UZ</button>
+          <button class="nav-lang-btn" data-lang="ru" onclick="window.masterStore?.updatePreference('language', 'ru'); window.profileManager?.applyLanguage('ru'); window.showWebToast('Язык: Русский 🇷🇺', '🌐');">RU</button>
+          <button class="nav-lang-btn" data-lang="en" onclick="window.masterStore?.updatePreference('language', 'en'); window.profileManager?.applyLanguage('en'); window.showWebToast('Language: English 🇺🇸', '🌐');">EN</button>
+        </div>
+
+        <!-- Sound FX Toggle Button -->
+        <button class="nav-sound-btn active" id="navbar-sound-btn" onclick="window.soundEngine?.toggleSound()" title="Ovoz: Yoqilgan (Sound ON)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+
+        <!-- Location Selector Button -->
+        <button class="nav-location-btn" id="navbar-location-btn" title="Change Delivery Location" onclick="document.getElementById('modal-location')?.classList.add('active'); document.body.classList.add('modal-open'); window.app?.renderLocationList(POPULAR_LOCATIONS);">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span id="nav-location-text">Bilzen, Tanjungbalai</span>
+        </button>
+
+        <!-- Theme Switcher (Dark / Light Mode) -->
+        <button class="btn-icon" id="btn-quick-theme-toggle" title="Kunduzgi/Tungi rejim (Toggle Light/Dark Theme)" aria-label="Toggle Theme" onclick="window.toggleTheme();">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Cart Button with live Badge -->
+        <div class="cart-btn-wrap">
+          <button class="btn-icon" id="navbar-cart-btn" aria-label="View Cart" onclick="window.openCartDrawer();">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </button>
+          <span class="cart-badge" id="navbar-cart-count">1</span>
+        </div>
+
+        <!-- User Profile Trigger -->
+        <div class="user-profile-btn" id="navbar-profile-btn" title="User Profile & Settings" onclick="window.app?.switchView('profile');">
+          <img class="nav-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar">
+          <span class="nav-user-name">Mr. Max</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ====================================================================
+       VIEW 1: MAIN CUSTOMER WEB APPLICATION
+       ==================================================================== -->
+  <main class="app-main-view web-view" id="view-home">
+
+    <!-- 1.1 HERO SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-promo-pill">
+            <span data-i18n="hero_promo_pill">🔥 Buy 1 Get 1 FREE • Special Autumn Offer</span>
+          </div>
+          <h1 class="hero-title"><span data-i18n="hero_title_1">Fall in Love with Coffee in </span><span data-i18n="hero_title_2">Blissful Delight!</span></h1>
+          <p class="hero-subtitle" data-i18n="hero_subtitle">Experience the rich aroma of artisanal single-origin beans roasted to perfection. Crafted fresh with organic milk and delivered straight to your door in minutes.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" id="btn-hero-order" data-i18n="btn_order_now" onclick="document.getElementById('menu-section')?.scrollIntoView({behavior:'smooth'});">Order Fresh Coffee ☕</button>
+            <button class="btn btn-secondary btn-lg" id="btn-hero-explore" data-i18n="btn_explore" onclick="document.getElementById('menu-section')?.scrollIntoView({behavior:'smooth'});">Explore Full Menu</button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>25k+</h3>
+              <p data-i18n="hero_stat_cust">Delighted Customers</p>
+            </div>
+            <div class="stat-item">
+              <h3>4.9 ⭐</h3>
+              <p data-i18n="hero_stat_rate">Average Rating</p>
+            </div>
+            <div class="stat-item">
+              <h3>15 Min</h3>
+              <p data-i18n="hero_stat_time">Average Delivery</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&auto=format&fit=crop&q=80" alt="Artisan Coffee Roasting">
+          </div>
+          <div class="floating-card top-left">
+            <div class="card-icon-round">☕</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">100% Arabica</div>
+              <div style="font-size:12px; color:var(--text-muted);">Ethically Sourced</div>
+            </div>
+          </div>
+          <div class="floating-card bottom-right">
+            <div class="card-icon-round" style="background:var(--c-green);">🛵</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Fast Courier</div>
+              <div style="font-size:12px; color:var(--text-muted);">Live GPS Tracking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.2 SPECIAL PROMOTIONS SECTION -->
+    <section class="promos-section" id="promos-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="promos_tag">Exclusive Deals</span>
+          <h2 class="section-title" data-i18n="promos_title">Special Offers & Coupons</h2>
+          <p class="section-subtitle" data-i18n="promos_subtitle">Click any promo banner to apply discount instantly to your order</p>
+        </div>
+
+        <div class="promos-grid">
+          <div class="promo-banner-card" data-promo-code="BOGO">
+            <div class="promo-card-left">
+              <span class="promo-card-code">CODE: BOGO</span>
+              <h3 class="promo-card-title">Buy 1 Get 1 FREE</h3>
+              <p class="promo-card-desc">Free coffee + $1 Delivery discount on orders over $4.00</p>
+            </div>
+            <div class="promo-card-thumb">
+              <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&auto=format&fit=crop&q=80" alt="BOGO Offer">
+            </div>
+          </div>
+
+          <div class="promo-banner-card" data-promo-code="COFFEE20" style="background: linear-gradient(135deg, #1A2820 0%, #224230 100%);">
+            <div class="promo-card-left">
+              <span class="promo-card-code" style="background:var(--c-green);">CODE: COFFEE20</span>
+              <h3 class="promo-card-title">20% Flat Discount</h3>
+              <p class="promo-card-desc">Enjoy 20% off all artisan lattes, macchiatos, and cappuccinos</p>
+            </div>
+            <div class="promo-card-thumb">
+              <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=300&auto=format&fit=crop&q=80" alt="Discount">
+            </div>
+          </div>
+
+          <div class="promo-banner-card" data-promo-code="WELCOME5" style="background: linear-gradient(135deg, #2D1A24 0%, #482337 100%);">
+            <div class="promo-card-left">
+              <span class="promo-card-code" style="background:#DF5538;">CODE: WELCOME5</span>
+              <h3 class="promo-card-title">$5 Welcome Bonus</h3>
+              <p class="promo-card-desc">Instant $5 off when you order above $15.00</p>
+            </div>
+            <div class="promo-card-thumb">
+              <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=300&auto=format&fit=crop&q=80" alt="Bonus">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.3 FULL COFFEE MENU SECTION -->
+    <section class="menu-section" id="menu-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="menu_tag">Crafted With Passion</span>
+          <h2 class="section-title" data-i18n="menu_title">Our Coffee Catalog</h2>
+          <p class="section-subtitle" data-i18n="menu_subtitle">Select your favorite brew or customize every detail to your liking</p>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="menu-filter-bar">
+          <div class="categories-pills-row" role="tablist">
+            <button class="cat-pill-btn active" data-cat="All Coffee" data-i18n="cat_all">All Coffee</button>
+            <button class="cat-pill-btn" data-cat="Machiato" data-i18n="cat_machiato">Machiato</button>
+            <button class="cat-pill-btn" data-cat="Latte" data-i18n="cat_latte">Latte</button>
+            <button class="cat-pill-btn" data-cat="Americano" data-i18n="cat_americano">Americano</button>
+            <button class="cat-pill-btn" data-cat="Cappuccino" data-i18n="cat_cappuccino">Cappuccino</button>
+            <button class="cat-pill-btn" data-cat="Cold Brew" data-i18n="cat_coldbrew">Cold Brew</button>
+            <button class="cat-pill-btn" data-cat="Specialty" data-i18n="cat_specialty">Specialty</button>
+          </div>
+
+          <div class="menu-search-box" style="position:relative;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="menu-search-input" data-i18n-placeholder="search_placeholder" placeholder="Search coffee by name..." autocomplete="off">
+            <button class="search-voice-btn" id="btn-voice-search" onclick="window.voiceSearch?.toggle()" title="Ovozli Qidiruv (Voice Search)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Products 4-Column Grid -->
+        <div class="products-web-grid" id="products-web-grid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.4 ABOUT US & FEATURES -->
+    <section class="about-section" id="about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The JavaGem Difference</span>
+          <h2 class="section-title">Why Coffee Lovers Choose Us</h2>
+          <p class="section-subtitle">From bean roasting to the last silky sip</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="7" ry="9"></ellipse><path d="M12 3c3 4.5-3 13.5 0 18"></path></svg>
+            </div>
+            <h3 class="feature-title">Single Origin Beans</h3>
+            <p class="feature-desc">100% Arabica beans harvested ethically from high-altitude estates in Colombia, Ethiopia, and Guatemala.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18.5" cy="17.5" r="3.5"></circle><circle cx="5.5" cy="17.5" r="3.5"></circle><path d="M15 6h-5l-3 6.5h11z"></path><path d="M19 17.5H9.5"></path></svg>
+            </div>
+            <h3 class="feature-title">15-Min Live Delivery</h3>
+            <p class="feature-desc">Our dedicated personal couriers deliver fresh coffee in thermal cups at optimal brewing temperature.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            </div>
+            <h3 class="feature-title">Master Baristas</h3>
+            <p class="feature-desc">Every cup is handcrafted with precise water ratios, velvet microfoam, and custom flavor profiles.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            </div>
+            <h3 class="feature-title">100% Biodegradable</h3>
+            <p class="feature-desc">All our cups, lids, and straws are plant-based and compostable to protect our environment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.5 FOOTER -->
+    <footer class="web-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand-logo" style="margin-bottom:12px;">
+              <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg></div>
+              <div class="brand-name">Java<span>Gem</span></div>
+            </a>
+            <p>Welcome to our cozy coffee corner, where every cup is crafted with pure passion and blissful delight.</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="#menu-section">Our Menu</a>
+              <a href="#promos-section">Special Coupons</a>
+              <a onclick="window.app.switchView('tracking')">Live Order Tracking</a>
+              <a onclick="window.app.switchView('profile')">Account Profile</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Working Hours</h4>
+            <div class="footer-links" style="color:var(--text-muted); font-size:14px;">
+              <p>Mon – Fri: 07:00 – 23:00</p>
+              <p>Sat – Sun: 08:00 – 00:00</p>
+              <p style="color:var(--c-green); font-weight:700; margin-top:8px;">● Open Now for Orders</p>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Location & Contact</h4>
+            <div class="footer-links" style="color:var(--text-muted); font-size:14px;">
+              <p>📍 Jl. Kpg Sutoyo No. 620, Bilzen</p>
+              <p>📞 +1 (555) 234-8901</p>
+              <p>✉️ support@javagem.coffee</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 JavaGem Coffee Co. All rights reserved. Nam Design Styleguide Applied.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+
+  <!-- ====================================================================
+       VIEW 2: ADMIN MANAGEMENT DASHBOARD
+       ==================================================================== -->
+  <section class="app-main-view admin-view hidden" id="view-admin">
+    <div class="admin-header-bar">
+      <div class="container admin-header-flex">
+        <div class="admin-title-group">
+          <h1 data-i18n="admin_head_title">JavaGem Management Dashboard</h1>
+          <p data-i18n="admin_head_sub">Real-time analytics, coffee menu catalog management, and order dispatch pipeline</p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-secondary" id="btn-admin-back-web" data-i18n="btn_back_web" onclick="window.app?.switchView('home')">← Back to Website</button>
+          <button class="btn btn-primary" id="btn-admin-add-product" data-i18n="btn_add_coffee" onclick="window.adminDashboard?.openProductModal(null)">+ Add New Coffee</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Admin Tab Navigation -->
+      <!-- Live Real-Time Admin Order Alert Box -->
+      <div id="admin-live-notification-box" style="display:none; margin-bottom: 24px;"></div>
+
+      <div class="admin-nav-tabs">
+        <button class="admin-tab-btn active" data-tab="overview" data-i18n="admin_tab_overview" onclick="document.querySelectorAll('.admin-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); window.adminDashboard.currentTab='overview'; window.adminDashboard.render();">📊 Dashboard Overview</button>
+        <button class="admin-tab-btn" data-tab="products" data-i18n="admin_tab_products" onclick="document.querySelectorAll('.admin-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); window.adminDashboard.currentTab='products'; window.adminDashboard.render();">☕ Menu Catalog (CRUD)</button>
+        <button class="admin-tab-btn" data-tab="orders" data-i18n="admin_tab_orders" onclick="document.querySelectorAll('.admin-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); window.adminDashboard.currentTab='orders'; window.adminDashboard.render();">🛵 Live Orders Dispatch</button>
+      </div>
+
+      <!-- Stats Cards Grid with Financial Breakdown -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="stat-icon-box revenue">💰</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_revenue">Jami Umumiy Tushum</h4>
+            <div class="stat-number" id="admin-stat-revenue">$ 0.00</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box" style="background:rgba(78, 124, 198, 0.15); color:#4E7CC6;">💳</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_card_rev">Karta orqali Tushum</h4>
+            <div class="stat-number" id="admin-stat-card-rev">$ 0.00</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box" style="background:rgba(54, 179, 126, 0.15); color:var(--c-green);">💵</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_cash_rev">Naqd Pulda Tushum</h4>
+            <div class="stat-number" id="admin-stat-cash-rev">$ 0.00</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box" style="background:rgba(156, 39, 176, 0.15); color:#9C27B0;">💎</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_wallet_rev">Hamyon orqali Tushum</h4>
+            <div class="stat-number" id="admin-stat-wallet-rev">$ 0.00</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box orders">📦</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_orders">Jami Buyurtmalar</h4>
+            <div class="stat-number" id="admin-stat-orders">0</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box deliveries">🛵</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_deliveries">Faol Yetkazilayotganlar</h4>
+            <div class="stat-number" id="admin-stat-deliveries">0</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon-box products">☕</div>
+          <div class="stat-info">
+            <h4 data-i18n="stat_products">Faol Kofelar Menyuda</h4>
+            <div class="stat-number" id="admin-stat-products">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro Visual Analytics & Sales Chart Section -->
+      <div id="admin-analytics-section">
+        <!-- Dynamically rendered via AdminAnalyticsManager in pro-features.js -->
+      </div>
+
+      <!-- Products Management Table -->
+      <div class="admin-card-container" id="admin-pane-products">
+        <div class="admin-card-head">
+          <h3 data-i18n="admin_pane_products_head">☕ Coffee Menu Items</h3>
+        </div>
+        <div class="admin-table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Coffee Product</th>
+                <th>Category</th>
+                <th>Base Price</th>
+                <th>Stock Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody">
+              <!-- Rendered via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Pipeline Table -->
+      <div class="admin-card-container" id="admin-pane-orders">
+        <div class="admin-card-head">
+          <h3 data-i18n="admin_pane_orders_head">🛵 Jonli Buyurtmalar va Dispetcher (Live Orders)</h3>
+        </div>
+        <div class="admin-table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Buyurtma ID & Vaqt</th>
+                <th>Mijoz & Telefon</th>
+                <th>Kofe & Manzil</th>
+                <th>To'lov Turi</th>
+                <th>Summa</th>
+                <th>Holat</th>
+                <th>Bosqichni O'zgartirish (Tezkor Boshqaruv)</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody">
+              <!-- Rendered via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================
+       VIEW 3: USER PROFILE & SETTINGS (NASTROYKA)
+       ==================================================================== -->
+  <section class="app-main-view profile-view hidden" id="view-profile">
+    <div class="container">
+      <div class="profile-layout">
+        <!-- Profile Left Sidebar -->
+        <aside class="profile-user-card">
+          <div class="profile-avatar-wrap">
+            <img class="profile-avatar-img" id="profile-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Profile">
+          </div>
+          <h3 class="profile-name" id="profile-name-display">Mr. Max</h3>
+          <p class="profile-email" id="profile-email-display">max@javagem.coffee</p>
+
+          <div class="profile-wallet-box">
+            <div class="wallet-label" data-i18n="prof_wallet_label">JavaGem Wallet Balance</div>
+            <div class="wallet-amount" id="profile-wallet-display">$ 24.50</div>
+          </div>
+
+          <nav class="profile-nav-list">
+            <button class="profile-tab-link active" data-pane="info" onclick="window.profileManager?.switchTab('info')">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span data-i18n="prof_tab_info">Personal Information</span>
+            </button>
+            <button class="profile-tab-link" data-pane="history" onclick="window.profileManager?.switchTab('history')">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="12 8 12 12 14 14"></polyline><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path></svg>
+              <span data-i18n="prof_tab_history">Order History</span>
+            </button>
+            <button class="profile-tab-link" data-pane="addresses" onclick="window.profileManager?.switchTab('addresses')">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span data-i18n="prof_tab_addr">Saved Addresses</span>
+            </button>
+            <button class="profile-tab-link" data-pane="wallet-cards" onclick="window.profileManager?.switchTab('wallet-cards')">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              <span data-i18n="prof_tab_wallet">💳 Cards & Wallet</span>
+            </button>
+            <button class="profile-tab-link" data-pane="settings" onclick="window.profileManager?.switchTab('settings')">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="prof_tab_settings">App Settings</span>
+            </button>
+            <button class="profile-tab-link admin-shortcut" onclick="window.app?.switchView('admin');">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span data-i18n="prof_admin_shortcut">👑 Admin Dashboard</span>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Profile Right Pane Content -->
+        <div class="profile-content-card">
+          <!-- 1. Personal Info Pane -->
+          <div class="profile-pane active" id="pane-info">
+            <div class="pane-header">
+              <h2 data-i18n="prof_info_title">Personal Information</h2>
+              <p data-i18n="prof_info_sub">Update your personal details, phone number, and avatar image</p>
+            </div>
+
+            <!-- Visual Avatar Studio & 10 Presets -->
+            <div class="avatar-studio-box">
+              <div class="avatar-studio-header">
+                <div class="avatar-preview-side">
+                  <img class="avatar-preview-img" id="avatar-preview-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Preview">
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:var(--text-main); margin-bottom:4px;">Profil Rasmi (Avatar)</h4>
+                    <p style="font-size:12px; color:var(--text-muted);">Kompyuteringizdan rasm yuklang yoki tayyor 10 ta avatardan tanlang</p>
+                  </div>
+                </div>
+                <div>
+                  <input type="file" id="input-prof-avatar-file" accept="image/*" style="display:none;" onchange="window.profileManager?.handleAvatarFileUpload(event)">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('input-prof-avatar-file').click();">
+                    <span data-i18n="avatar_upload_btn">📁 Kompyuterdan Rasm Tanlash</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="form-label" style="margin-bottom:8px; font-weight:700; color:var(--text-main);" data-i18n="avatar_gallery_title">Tayyor Avatarlardan Tanlang (10 ta variant):</label>
+                <div class="avatar-presets-grid" id="avatar-presets-grid">
+                  <!-- Rendered dynamically via profile.js -->
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+              <div class="form-group">
+                <label class="form-label" data-i18n="prof_info_name">Full Name</label>
+                <input type="text" class="form-control" id="input-prof-name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="prof_info_email">Email Address</label>
+                <input type="email" class="form-control" id="input-prof-email">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="prof_info_phone">Phone Number</label>
+                <input type="text" class="form-control" id="input-prof-phone">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="prof_info_avatar">Avatar Photo URL</label>
+                <input type="text" class="form-control" id="input-prof-avatar" placeholder="https://..." oninput="window.profileManager?.previewAvatar(this.value)">
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-save-profile-info" style="margin-top:16px;" data-i18n="btn_save_info" onclick="window.profileManager?.saveProfileInfo();">Save Changes</button>
+          </div>
+
+          <!-- 2. Order History Pane -->
+          <div class="profile-pane" id="pane-history">
+            <div class="pane-header">
+              <h2 data-i18n="history_title">Order History & Receipts</h2>
+              <p data-i18n="history_sub">View all your past coffee orders and reorder with a single click</p>
+            </div>
+            <div id="profile-orders-history">
+              <!-- Rendered via profile.js -->
+            </div>
+          </div>
+
+          <!-- 3. Saved Addresses Pane -->
+          <div class="profile-pane" id="pane-addresses">
+            <div class="pane-header" style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <h2 data-i18n="addr_title">Saved Delivery Addresses</h2>
+                <p data-i18n="addr_sub">Manage your home, office, and frequent delivery locations</p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-add-new-address" data-i18n="btn_add_addr">+ Add Address</button>
+            </div>
+            <div class="address-grid" id="profile-addresses-grid">
+              <!-- Rendered via profile.js -->
+            </div>
+          </div>
+
+          <!-- 4. Payment Cards & Wallet Pane -->
+          <div class="profile-pane" id="pane-wallet-cards">
+            <div class="pane-header" style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <h2 data-i18n="cards_wallet_title">Payment Cards & Wallet</h2>
+                <p data-i18n="cards_wallet_sub">Manage your saved bank cards and top up JavaGem balance</p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-profile-add-card" data-i18n="btn_add_new_card">+ Add New Card</button>
+            </div>
+
+            <div style="background:var(--bg-surface-elevated); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px; margin-bottom:24px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                <div>
+                  <div style="font-size:13px; color:var(--text-muted); font-weight:600;" data-i18n="prof_wallet_label">Current Wallet Balance</div>
+                  <div style="font-size:28px; font-weight:800; color:var(--c-primary); margin-top:4px;" id="profile-wallet-pane-balance">$ 24.50</div>
+                </div>
+                <div class="wallet-actions-row">
+                  <button class="topup-btn" data-amount="10">+ $10.00</button>
+                  <button class="topup-btn" data-amount="25">+ $25.00</button>
+                  <button class="topup-btn" data-amount="50">+ $50.00</button>
+                  <button class="topup-btn" data-amount="100">+ $100.00</button>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="font-size:16px; font-weight:700; margin-bottom:14px; color:var(--text-main);" data-i18n="saved_cards_title">Saved Payment Cards</h3>
+            <div class="cards-grid" id="profile-cards-grid">
+              <!-- Rendered via profile.js -->
+            </div>
+          </div>
+
+          <!-- 5. Settings (Nastroyka) Pane -->
+          <div class="profile-pane" id="pane-settings">
+            <div class="pane-header">
+              <h2 data-i18n="settings_title">Application Preferences</h2>
+              <p data-i18n="settings_sub">Customize theme, sound effects, language, and notification alerts</p>
+            </div>
+
+            <div class="settings-group">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <h4 data-i18n="theme_title">Light Mode / Dark Mode</h4>
+                  <p>Switch between dark obsidian theme and soft light cream theme</p>
+                </div>
+                <label class="switch-box">
+                  <input type="checkbox" id="pref-theme-toggle">
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <h4 data-i18n="sound_title">Audio & Sound Effects</h4>
+                  <p>Play satisfying espresso brewing and order confirmation sounds</p>
+                </div>
+                <label class="switch-box">
+                  <input type="checkbox" id="pref-sound-toggle" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <h4 data-i18n="lang_title">Language (Tilni Tanlang)</h4>
+                  <p data-i18n="settings_sub">Select your preferred interface language</p>
+                </div>
+                <select class="form-control" id="pref-lang-select" style="width:160px;">
+                  <option value="uz">🇺🇿 O'zbekcha</option>
+                  <option value="ru">🇷🇺 Русский</option>
+                  <option value="en">🇺🇸 English</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================
+       VIEW 4: LIVE ORDER TRACKING & MAP
+       ==================================================================== -->
+  <section class="app-main-view tracking-view hidden" id="view-tracking">
+    <div class="container">
+      <div class="section-header" style="text-align:left; margin-bottom:24px;">
+        <span class="section-tag" data-i18n="tracking_tag">Live GPS Tracking</span>
+        <h2 class="section-title" data-i18n="tracking_title">Your Fresh Brew is on the Way! 🛵</h2>
+      </div>
+
+      <div class="tracking-grid">
+        <!-- Interactive Canvas Map -->
+        <div class="tracking-map-box">
+          <canvas id="web-tracking-canvas"></canvas>
+          <div class="map-top-overlay">
+            <span class="badge badge-primary" style="background:var(--bg-surface); padding:8px 14px;">Live Courier Route</span>
+            <button class="btn btn-secondary btn-sm" onclick="window.webTrackingMap?.resize()">🎯 Center Map</button>
+          </div>
+        </div>
+
+        <!-- Order Status Sidebar -->
+        <div class="tracking-info-card">
+          <div class="tracking-header-status">
+            <div class="tracking-timer-big" id="tracking-live-timer">10 Minutes Left</div>
+            <div class="tracking-destination">Delivery to <strong id="tracking-live-address">Jl. Kpg Sutoyo No. 620</strong></div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" id="tracking-live-ord-id">Order #ORD-8921</div>
+          </div>
+
+          <!-- 4-Step Progress Line -->
+          <div class="tracking-timeline">
+            <div class="timeline-step completed">
+              <div class="step-icon-node">✓</div>
+              <div class="step-content">
+                <h4 data-i18n="step_1">1. Order Confirmed</h4>
+                <p>We received and authorized your order</p>
+              </div>
+            </div>
+
+            <div class="timeline-step completed">
+              <div class="step-icon-node">✓</div>
+              <div class="step-content">
+                <h4 data-i18n="step_2">2. Freshly Brewed</h4>
+                <p>Espresso extracted & milk frothed</p>
+              </div>
+            </div>
+
+            <div class="timeline-step active">
+              <div class="step-icon-node">🛵</div>
+              <div class="step-content">
+                <h4 data-i18n="step_3">3. On the Way</h4>
+                <p>Courier is navigating to your address</p>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="step-icon-node">☕</div>
+              <div class="step-content">
+                <h4 data-i18n="step_4">4. Delivered & Enjoy</h4>
+                <p>Handed over in thermal eco cup</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barista Live Crafting Simulator -->
+          <div class="barista-live-card">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:13px; font-weight:700; color:var(--text-primary);">🧑‍🍳 Barista Tayyorlash Bosqichlari</span>
+              <span style="font-size:11px; color:var(--color-primary); font-weight:700;">Jonli Jarayon</span>
+            </div>
+            <div class="barista-step-grid">
+              <div class="barista-step-box done">
+                <div class="barista-step-icon">🫘</div>
+                <div class="barista-step-label">Maydalash</div>
+              </div>
+              <div class="barista-step-box done">
+                <div class="barista-step-icon">💧</div>
+                <div class="barista-step-label">Ekstraktsiya</div>
+              </div>
+              <div class="barista-step-box active">
+                <div class="barista-step-icon">🥛</div>
+                <div class="barista-step-label">Ko‘pirtirish</div>
+              </div>
+              <div class="barista-step-box">
+                <div class="barista-step-icon">✨</div>
+                <div class="barista-step-label">Latte Art</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Courier Profile -->
+          <div class="tracking-courier-box">
+            <div class="courier-left">
+              <img class="courier-thumb-round" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Courier">
+              <div>
+                <h4 id="tracking-courier-name">Brooklyn Simmons</h4>
+                <p style="font-size:12px; color:var(--text-muted);">Personal Courier • ⭐ 4.9</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="btn-icon" id="btn-call-courier" onclick="alert('Calling courier Brooklyn Simmons at +1 (555) 234-8901 📞...');" title="Call Courier">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </button>
+              <button class="btn-icon" id="btn-msg-courier" onclick="const m = prompt('Send message to courier Brooklyn Simmons:'); if (m) window.showWebToast('Message sent to courier: ' + m, '✉️');" title="Message Courier">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================
+       MODALS & DRAWERS
+       ==================================================================== -->
+
+  <!-- 1. SLIDING CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-head">
+        <h3 data-i18n="cart_title">Your Coffee Bag</h3>
+        <button class="btn-close-modal" id="btn-close-cart" onclick="window.cartManager?.closeCart()" aria-label="Close Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="cart-items-scroll" id="cart-items-container">
+        <!-- Rendered via cart.js -->
+      </div>
+      <div class="cart-drawer-foot">
+        <!-- Promo Code Input / Tag -->
+        <div id="cart-promo-section"></div>
+
+        <div class="cart-summary-line">
+          <span data-i18n="subtotal">Subtotal</span>
+          <span id="cart-subtotal-val">$ 0.00</span>
+        </div>
+        <div class="cart-summary-line">
+          <span data-i18n="delivery_fee">Delivery Fee</span>
+          <span id="cart-delivery-val">$ 1.00</span>
+        </div>
+        <div class="cart-summary-line total">
+          <span data-i18n="total">Total</span>
+          <span id="cart-total-val">$ 0.00</span>
+        </div>
+        <button class="btn btn-primary" style="width:100%;" id="btn-proceed-checkout" data-i18n="btn_proceed_checkout">Proceed to Checkout →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. COFFEE CUSTOMIZER MODAL -->
+  <div class="web-modal-overlay" id="modal-customizer">
+    <div class="web-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title" data-i18n="custom_title">Customize Your Coffee</h3>
+        <button class="btn-close-modal" id="btn-close-customizer" onclick="window.cartManager?.closeCustomizer()" aria-label="Close Customizer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="customizer-hero-row">
+        <img class="customizer-img" id="customizer-hero-img" src="" alt="Coffee">
+        <div class="customizer-info">
+          <h3 id="customizer-prod-title">Caffe Mocha</h3>
+          <p id="customizer-prod-sub">Deep Foam</p>
+        </div>
+      </div>
+
+      <!-- Size Options -->
+      <div class="customizer-option-group">
+        <div class="opt-group-label" data-i18n="opt_size_label">1. Select Cup Size</div>
+        <div class="opt-pills-row">
+          <button class="opt-pill-btn opt-size-btn" data-size="S">Small (12 oz)</button>
+          <button class="opt-pill-btn opt-size-btn active" data-size="M">Medium (16 oz)</button>
+          <button class="opt-pill-btn opt-size-btn" data-size="L">Large (20 oz)</button>
+        </div>
+      </div>
+
+      <!-- Milk Type -->
+      <div class="customizer-option-group">
+        <div class="opt-group-label" data-i18n="opt_milk_label">2. Choice of Milk</div>
+        <div class="opt-pills-row">
+          <button class="opt-pill-btn opt-milk-btn active" data-milk="Whole Milk">Whole Milk</button>
+          <button class="opt-pill-btn opt-milk-btn" data-milk="Oat Milk">Oat Milk (Barista)</button>
+          <button class="opt-pill-btn opt-milk-btn" data-milk="Almond Milk">Almond Milk</button>
+          <button class="opt-pill-btn opt-milk-btn" data-milk="Skim Milk">Skim Milk</button>
+        </div>
+      </div>
+
+      <!-- Sweetness -->
+      <div class="customizer-option-group">
+        <div class="opt-group-label" data-i18n="opt_sweet_label">3. Sweetness Level</div>
+        <div class="opt-pills-row">
+          <button class="opt-pill-btn opt-sweet-btn" data-sweet="0% No Sugar">0% No Sugar</button>
+          <button class="opt-pill-btn opt-sweet-btn active" data-sweet="50% Sweet">50% Sweet</button>
+          <button class="opt-pill-btn opt-sweet-btn" data-sweet="100% Sweet">100% Sweet</button>
+        </div>
+      </div>
+
+      <!-- Temperature -->
+      <div class="customizer-option-group">
+        <div class="opt-group-label" data-i18n="opt_temp_label">4. Temperature</div>
+        <div class="opt-pills-row">
+          <button class="opt-pill-btn opt-temp-btn active" data-temp="Hot">Hot Brew 🔥</button>
+          <button class="opt-pill-btn opt-temp-btn" data-temp="Ice">Iced Cold 🧊</button>
+          <button class="opt-pill-btn opt-temp-btn" data-temp="Less Ice">Less Ice ❄️</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; margin-top:20px;" id="btn-add-custom-to-cart" onclick="window.cartManager?.addCurrentCustomizedProductToCart();">
+        <span data-i18n="btn_add_to_cart">Add to Cart</span> • <span id="customizer-price-display">$ 4.53</span>
+      </button>
+
+      <!-- Interactive Rating & Reviews -->
+      <div class="star-rating-box" style="margin-top:24px;">
+        <div class="star-rating-title" data-i18n="rate_title">Rate this Coffee (Yulduz bering ⭐)</div>
+        <div class="interactive-stars-row">
+          <div id="customizer-interactive-stars"></div>
+          <span class="star-score-text" id="customizer-rating-score-text">4.8 (230 reviews)</span>
+        </div>
+      </div>
+
+      <!-- Customer Reviews & Comments Section -->
+      <div class="customizer-reviews-section">
+        <div class="reviews-head-row">
+          <h4 style="font-size:15px; font-weight:700; color:var(--text-main);" data-i18n="comments_title">Customer Reviews & Comments (Fikrlar)</h4>
+        </div>
+        <div class="reviews-list-scroll" id="customizer-reviews-list">
+          <!-- Rendered via cart.js -->
+        </div>
+        <div class="add-comment-box">
+          <input type="text" id="input-new-comment-text" data-i18n-placeholder="comment_placeholder" placeholder="Write your review or comment (Fikr yozing)...">
+          <button class="btn btn-primary btn-sm" id="btn-post-coffee-comment" data-i18n="btn_post_comment" onclick="const ci=document.getElementById('input-new-comment-text'); const p=window.cartManager?.currentCustomizeProduct; if(p && ci && ci.value.trim()){ window.masterStore?.addComment(p.id, ci.value.trim(), 5); ci.value=''; window.cartManager?.renderCustomizerReviewsAndRatings(p); window.showWebToast('Fikr muvaffaqiyatli qoldirildi! 💬', '🎉'); }">Post 💬</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CHECKOUT MODAL -->
+  <div class="web-modal-overlay" id="modal-checkout">
+    <div class="web-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title" data-i18n="checkout_title">Checkout & Place Order</h3>
+        <button class="btn-close-modal" id="btn-close-checkout" onclick="window.cartManager?.closeCheckout()" aria-label="Close Checkout">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Segmented Deliver vs Pickup -->
+      <div class="checkout-segmented-row">
+        <button class="checkout-seg-btn active" data-mode="deliver" data-i18n="mode_deliver">🛵 Delivery (15 min)</button>
+        <button class="checkout-seg-btn" data-mode="pickup" data-i18n="mode_pickup">🏪 Store Pickup (Free)</button>
+      </div>
+
+      <!-- Address Select -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="delivery_addr_label">Delivery Address</label>
+        <select class="form-control" id="checkout-address-select"></select>
+      </div>
+
+      <!-- Promo Code -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="promo_code_label">Discount Promo Code</label>
+        <div class="promo-input-row">
+          <input type="text" class="form-control" id="input-checkout-promo" placeholder="Enter coupon (e.g. BOGO, COFFEE20)">
+          <button class="btn btn-secondary" id="btn-apply-checkout-promo" data-i18n="apply_btn" onclick="const pi=document.getElementById('input-checkout-promo')?.value.trim(); const pr=window.masterStore?.promos.find(p=>p.code.toLowerCase()===pi.toLowerCase()); if(pr){ window.masterStore.activeDiscount=pr; window.cartManager?.renderCheckout(); window.showWebToast('Kupon qo‘llandi: '+pr.code, '🏷️'); } else { window.showWebToast('Noto‘g‘ri kupon kodi! (BOGO yoki COFFEE20)', '❌'); }">Apply</button>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="payment_method_label">Payment Method</label>
+        <select class="form-control" id="checkout-payment-select">
+          <option value="Cash/Wallet">💵 Cash / JavaGem Wallet ($24.50)</option>
+          <option value="Credit Card">💳 Credit / Debit Card (Visa / Mastercard)</option>
+          <option value="Apple Pay">🍎 Apple Pay / Google Pay</option>
+        </select>
+      </div>
+
+      <!-- Payment Breakdown -->
+      <div style="background:var(--bg-surface-elevated); padding:16px; border-radius:12px; margin:20px 0; border:1px solid var(--border-color);">
+        <div class="cart-summary-line"><span data-i18n="subtotal">Subtotal:</span><span id="checkout-subtotal">$ 0.00</span></div>
+        <div class="cart-summary-line"><span data-i18n="delivery_fee">Delivery:</span><span id="checkout-delivery">$ 1.00</span></div>
+        <div class="cart-summary-line" style="color:var(--c-green);"><span data-i18n="promos_tag">Discount:</span><span id="checkout-discount">-$ 0.00</span></div>
+        <div class="cart-summary-line total" style="margin:8px 0 0 0; padding-top:8px;"><span data-i18n="total">Total:</span><span id="checkout-total" style="color:var(--c-primary); font-size:20px;">$ 0.00</span></div>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;" id="btn-confirm-place-order" data-i18n="btn_confirm_order" onclick="window.cartManager?.placeOrder();">Confirm & Place Order ☕</button>
+    </div>
+  </div>
+
+  <!-- 4. ADMIN ADD / EDIT PRODUCT MODAL -->
+  <div class="web-modal-overlay" id="modal-admin-product">
+    <div class="web-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title" id="admin-product-modal-title" data-i18n="admin_product_modal_title">Add Coffee Product</h3>
+        <button class="btn-close-modal" onclick="document.getElementById('modal-admin-product').classList.remove('active'); document.body.classList.remove('modal-open');" aria-label="Close Modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-i18n="tbl_product">Coffee Name</label>
+        <input type="text" class="form-control" id="admin-input-prod-name" placeholder="e.g. Vanilla Caramel Macchiato">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Subtitle / Roast Type</label>
+        <input type="text" class="form-control" id="admin-input-prod-sub" placeholder="e.g. Dark Cocoa & Vanilla">
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div class="form-group">
+          <label class="form-label" data-i18n="tbl_category">Category</label>
+          <select class="form-control" id="admin-input-prod-cat">
+            <option value="Machiato">Machiato</option>
+            <option value="Latte">Latte</option>
+            <option value="Americano">Americano</option>
+            <option value="Cappuccino">Cappuccino</option>
+            <option value="Cold Brew">Cold Brew</option>
+            <option value="Specialty">Specialty</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="tbl_price">Base Price ($)</label>
+          <input type="number" step="0.01" class="form-control" id="admin-input-prod-price" value="4.50">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="admin-input-prod-img" value="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&auto=format&fit=crop&q=80">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" id="admin-input-prod-desc" style="height:90px; resize:none;" placeholder="Crafted with single origin beans..."></textarea>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;" id="btn-save-admin-product" data-i18n="btn_save_product" onclick="window.adminDashboard?.saveProductForm();">Save Product to Menu ☕</button>
+    </div>
+  </div>
+
+  <!-- 5. DELIVERY LOCATION SELECTOR MODAL -->
+  <div class="web-modal-overlay" id="modal-location">
+    <div class="web-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title" data-i18n="location_modal_title">Select Delivery Location 📍</h3>
+        <button class="btn-close-modal" onclick="document.getElementById('modal-location').classList.remove('active'); document.body.classList.remove('modal-open');" aria-label="Close Location">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="input-search-location" data-i18n-placeholder="search_location_placeholder" placeholder="Search city, district, or street (Toshkent, Samarqand, etc.)...">
+      </div>
+      <button class="btn btn-secondary" style="width:100%; margin-bottom:16px;" id="btn-use-gps-loc" data-i18n="btn_use_gps">📍 Use Current GPS Location (Aniq joylashuv)</button>
+      <div class="location-list-grid" id="location-items-list">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. ADD PAYMENT CARD MODAL -->
+  <div class="web-modal-overlay" id="modal-add-card">
+    <div class="web-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title" data-i18n="add_card_modal_title">Add Bank Card (Karta Qo'shish) 💳</h3>
+        <button class="btn-close-modal" onclick="document.getElementById('modal-add-card').classList.remove('active'); document.body.classList.remove('modal-open');" aria-label="Close Modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="card_number_label">Card Number (16-xonali raqam)</label>
+        <input type="text" class="form-control" id="input-card-number" placeholder="8600 0000 0000 0000" maxlength="19">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="card_holder_label">Cardholder Name (Karta egasi)</label>
+        <input type="text" class="form-control" id="input-card-holder" placeholder="MR MAX">
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div class="form-group">
+          <label class="form-label" data-i18n="card_exp_label">Expiry Date (Amal qilish muddati)</label>
+          <input type="text" class="form-control" id="input-card-exp" placeholder="MM/YY" maxlength="5">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="card_cvv_label">CVV / CVC Code</label>
+          <input type="password" class="form-control" id="input-card-cvv" placeholder="•••" maxlength="4">
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%; margin-top:10px;" id="btn-save-new-card" data-i18n="btn_save_card" onclick="window.profileManager?.saveCardForm();">Save Card to Account 💳</button>
+    </div>
+  </div>
+
+  <!-- 7. GLOBAL FLOATING ORDER ALERT (Live Admin Order Pop-up) -->
+  <div class="global-admin-order-alert" id="global-admin-order-alert" style="display:none;">
+    <div class="alert-content">
+      <div class="alert-badge">🔔 <span data-i18n="admin_new_order_alert">YANGI BUYURTMA KELDI!</span></div>
+      <div class="alert-text" id="global-order-alert-text">Buyurtma #ORD-XXXX • $0.00</div>
+    </div>
+    <button class="btn btn-sm btn-primary" id="btn-global-open-admin" onclick="window.app?.switchView('admin'); document.getElementById('global-admin-order-alert').style.display='none';" data-i18n="btn_view_admin_order">Admin Panelda Ko‘rish →</button>
+    <button class="alert-close-btn" onclick="document.getElementById('global-admin-order-alert').style.display='none';">✕</button>
+  </div>
+
+  <!-- 8. FLOATING ADMIN QUICK ACCESS BUTTON -->
+  <button class="floating-admin-btn" id="btn-floating-admin" onclick="window.app?.switchView(window.masterStore?.currentView === 'admin' ? 'home' : 'admin');" title="Admin Panel">
+    <span class="admin-float-icon">👑</span>
+    <span class="admin-float-text">Admin</span>
+    <span class="admin-float-badge" id="admin-orders-badge" style="display:none;">0</span>
+  </button>
+
+  <!-- 9. AUTHENTICATION MODAL (Login / Register / Google) -->
+  <div class="auth-modal-overlay hidden" id="modal-auth">
+    <div class="auth-modal-card">
+      <div class="auth-header-row">
+        <div class="auth-brand-badge">
+          <div class="icon">☕</div>
+          <div>
+            <h3 id="auth-modal-title">Xush Kelibsiz! ☕</h3>
+            <p style="font-size:12px; color:var(--text-muted);" id="auth-modal-subtitle">JavaGem qahva olamiga kiring</p>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-auth" aria-label="Close Auth Modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Segmented Tab: Sign In vs Sign Up -->
+      <div class="auth-segmented-tabs">
+        <button class="auth-tab-btn active" data-tab="login">Kirish (Sign In)</button>
+        <button class="auth-tab-btn" data-tab="register">Ro‘yxatdan O‘tish (Sign Up)</button>
+      </div>
+
+      <!-- Google Sign In Button -->
+      <button class="btn-google-auth" id="btn-auth-google">
+        <svg viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.25 21.36 7.33 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.97 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.25 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+        </svg>
+        <span>Google orqali kirish (Continue with Google)</span>
+      </button>
+
+      <div class="auth-divider">
+        <span>yoki elektron pochta bilan</span>
+      </div>
+
+      <!-- Form Inputs -->
+      <form id="auth-form" onsubmit="return false;">
+        <div class="form-group" id="auth-name-group" style="display:none;">
+          <label class="form-label">To‘liq Ismingiz (Full Name)</label>
+          <input type="text" class="form-control" id="input-auth-name" placeholder="Masalan: Max Verstappen">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gmail Manzilingiz (@gmail.com talab qilinadi)</label>
+          <input type="email" class="form-control" id="input-auth-email" placeholder="ismingiz@gmail.com" required autocomplete="email">
+          <div class="input-feedback-msg" id="auth-email-feedback"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Parol (Katta harf, raqam, maxsus belgi, 8+)</label>
+          <div class="password-input-wrap">
+            <input type="password" class="form-control" id="input-auth-pwd" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-pwd" id="btn-toggle-auth-pwd" title="Parolni ko'rsatish/yashirish">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+
+          <!-- Password Security Requirements Checklist -->
+          <div class="password-criteria-box">
+            <div class="password-criteria-title">Parol xavfsizlik talablari:</div>
+            <div class="password-criteria-list">
+              <div class="criteria-item" id="crit-length"><span class="dot"></span> Kamida 8 ta belgi</div>
+              <div class="criteria-item" id="crit-upper"><span class="dot"></span> Katta harf (A-Z)</div>
+              <div class="criteria-item" id="crit-number"><span class="dot"></span> Raqam (0-9)</div>
+              <div class="criteria-item" id="crit-special"><span class="dot"></span> Maxsus belgi (!@#$...)</div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:20px;" id="btn-auth-submit">Kirish (Sign In) ☕</button>
+      </form>
+
+      <div style="text-align:center; margin-top:16px;">
+        <button type="button" class="btn-onboarding-skip" id="btn-auth-guest" style="font-size:13px; color:var(--text-muted);">Mehmon sifatida ko‘rish (Browse as Guest) →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. AI COFFEE SOMMELIER MODAL -->
+  <div class="web-modal-overlay hidden" id="modal-ai-sommelier" style="display:flex; align-items:center; justify-content:center;">
+    <div class="ai-quiz-card">
+      <button class="btn-close-modal" style="position:absolute; right:16px; top:16px;" onclick="window.aiSommelier?.close()" aria-label="Close Quiz">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="ai-sommelier-body">
+        <!-- Rendered dynamically via AISommelierManager -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. DAILY COFFEE FORTUNE WHEEL MODAL -->
+  <div class="web-modal-overlay hidden" id="modal-spin-wheel" style="display:flex; align-items:center; justify-content:center;">
+    <div class="spin-wheel-card">
+      <button class="btn-close-modal" style="position:absolute; right:16px; top:16px;" onclick="window.dailyReward?.close()" aria-label="Close Wheel">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 style="font-size:22px; font-weight:800; color:var(--text-primary);">🎡 Kunlik Baxtli Finjon</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">G‘ildirakni aylantiring va $5 gacha bonus yoki 20% keshbek yutib oling!</p>
+
+      <div class="wheel-canvas-container">
+        <div class="wheel-pointer"></div>
+        <canvas id="wheel-canvas" width="280" height="280"></canvas>
+        <div class="wheel-center-hub">☕</div>
+      </div>
+
+      <button class="btn btn-primary btn-lg" id="btn-spin-action" style="width:100%; margin-top:10px;" onclick="window.dailyReward?.spin()">
+        Aylantirish (Spin Now!) ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- 12. DIGITAL THERMAL RECEIPT MODAL -->
+  <div class="web-modal-overlay hidden" id="modal-receipt" style="display:flex; align-items:center; justify-content:center;">
+    <div class="receipt-modal-card">
+      <div class="receipt-jagged-top"></div>
+      <div id="receipt-content-body">
+        <!-- Rendered via DigitalReceiptManager -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. GLOBAL TOAST NOTIFICATION -->
+  <div class="web-toast" id="global-web-toast">
+    <span id="web-toast-icon" style="font-size:20px;">☕</span>
+    <span id="web-toast-msg">Added to cart!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/pro-features.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
